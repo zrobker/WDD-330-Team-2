@@ -14,15 +14,21 @@ export default async function productDetails(productId) {
 }
 
 export function addProductToCart() {
-    console.log("in addProductToCart");
     let cart = getLocalStorage("so-cart");
     if (!cart) {
       cart = [];
     }
     cart.push(product);
     setLocalStorage("so-cart", cart);
-    console.log(cart);
+
+    document.querySelector(".cart").style.animation = "shake 0.5s";   //animates cart/backpack
+    setTimeout(reset, 600);   //used to reset animation
   }
+
+function reset() {
+  document.querySelector(".cart").style.animation = "none";   
+}
+  
 
 function renderProductDetails() {
     console.log("in render");
