@@ -1,5 +1,6 @@
 import { findProductById } from "./productData.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import productList from "./productList.mjs";
 
 let product = {};
 
@@ -30,7 +31,7 @@ function reset() {
 }
   
 
-function renderProductDetails() {
+export function renderProductDetails() {
     console.log("in render");
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
@@ -44,3 +45,5 @@ function renderProductDetails() {
       product.DescriptionHtmlSimple;
     document.querySelector("#addToCart").dataset.id = product.Id;
 }
+
+productList();
