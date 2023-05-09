@@ -1,6 +1,6 @@
 # sleepoutside
 
-https://app.netlify.com/sites/whimsical-sherbet-f7a324/overview 
+https://whimsical-sherbet-f7a324.netlify.app/
 
 ## Description
 
