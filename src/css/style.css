@@ -195,6 +195,11 @@ button {
   grid-row: 1/3;
   grid-column: 1;
 }
+.cart-card .qty {
+  grid-row: 1;
+  grid-column: 3/4;
+  margin: auto;
+}
 .cart-card p {
   margin-top: 0;
 }
@@ -208,9 +213,12 @@ button {
   grid-column: 2;
 }
 
+.cart-card .remove {
+  width: 30px;
+}
+
 .cart-card__quantity {
-  grid-row: 1;
-  grid-column: 3;
+  text-align: center;
 }
 
 .cart-card__price {
