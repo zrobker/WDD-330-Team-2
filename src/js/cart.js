@@ -18,9 +18,7 @@ function renderCartContents() {
   for (let i=0; i<nodeList.length; i++) {
     let item = nodeList[i];
     let idTest = item.getAttribute('data-id');
-    console.log("adding a listener to each item");
-    console.log(idTest);
-    console.log(item);
+
     //Cannot directly pass argument to a function using addEventListener. Use an anonymous function that calls the destination function.
     nodeList[i].addEventListener('click', function() { removeProductFromCart(idTest);
       renderCartContents();

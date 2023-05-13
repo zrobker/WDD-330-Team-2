@@ -26,12 +26,10 @@ export function addProductToCart() {
     setTimeout(reset, 600);   //used to reset animation
   }
 export function removeProductFromCart(item) {
-  console.log("in remove Item function");
-  console.log(item);
   let cart = getLocalStorage("so-cart");
-  console.log(cart);
+  
   const searchIndex = cart.findIndex((product)=> product.Id==item);
-  console.log(searchIndex);
+  
   cart.splice(searchIndex, 1);
   setLocalStorage("so-cart", cart);
 }
@@ -42,7 +40,7 @@ function reset() {
   
 
 export function renderProductDetails() {
-  console.log("in renderProductDetails");
+  
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
       product.NameWithoutBrand;
