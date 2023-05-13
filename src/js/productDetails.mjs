@@ -1,7 +1,7 @@
 import { findProductById } from "./productData.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
-import productList from "./productList.mjs";
-//import { renderCartContents } from './cart.mjs';
+import  productList  from "./productList.mjs";
+
 
 let product = {};
 
