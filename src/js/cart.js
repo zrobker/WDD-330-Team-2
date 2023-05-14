@@ -1,4 +1,5 @@
 import { getLocalStorage } from './utils.mjs';
+let totalPrice = 0;
 
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
@@ -9,6 +10,10 @@ function renderCartContents() {
       '<a href=\'../index.html\'> Continue shopping here</a>';
   } else {
     document.querySelector('.product-list').innerHTML = htmlItems?.join('');
+    let part1 = '<p class="cart-total">Total: $'
+    let part2 = '</p>'
+    let totalHTML = part1.concat(totalPrice, part2);
+    document.querySelector('.cart-footer').innerHTML = totalHTML;
   }
 }
 
@@ -27,7 +32,7 @@ function cartItemTemplate(item) {
   <p class='cart-card__quantity'>qty: 1</p>
   <p class='cart-card__price'>$${item.FinalPrice}</p>
 </li>`;
-
+  totalPrice += item.FinalPrice;
   return newItem;
 }
 
