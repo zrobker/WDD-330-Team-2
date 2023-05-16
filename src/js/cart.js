@@ -1,6 +1,9 @@
 import { getLocalStorage } from './utils.mjs';
 import { removeProductFromCart } from './productDetails.mjs';
 
+import { loadHeaderFooter } from "./utils.mjs";
+loadHeaderFooter();
+
 let totalPrice = 0;
 
 
