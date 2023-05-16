@@ -1,5 +1,8 @@
 import { getLocalStorage } from './utils.mjs';
+import { removeProductFromCart } from './productDetails.mjs';
+
 let totalPrice = 0;
+
 
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
@@ -15,6 +18,20 @@ function renderCartContents() {
     let totalHTML = part1.concat(totalPrice, part2);
     document.querySelector('.cart-footer').innerHTML = totalHTML;
   }
+
+  //querySelectorAll() method returns a NodeList object which does not have a click() function. Use querySelectorAll() to select a group of elements and then loop through them to add a click event listener to each one.
+  
+  const nodeList = document.querySelectorAll('.remove');
+  for (let i=0; i<nodeList.length; i++) {
+    let item = nodeList[i];
+    let idTest = item.getAttribute('data-id');
+
+    //Cannot directly pass argument to a function using addEventListener. Use an anonymous function that calls the destination function.
+    nodeList[i].addEventListener('click', function() { removeProductFromCart(idTest);
+      renderCartContents();
+    });
+    
+  }
 }
 
 function cartItemTemplate(item) {
@@ -29,11 +46,22 @@ function cartItemTemplate(item) {
     <h2 class='card__name'>${item.Name}</h2>
   </a>
   <p class='cart-card__color'>${item.Colors[0].ColorName}</p>
-  <p class='cart-card__quantity'>qty: 1</p>
+  <div class='qty'>
+    <img class='remove' data-id=${item.Id} src='/public/images/removeitemfromcart.png' alt='remove item'>
+    <p class='cart-card__quantity'>qty: 1</p>
+  </div>
   <p class='cart-card__price'>$${item.FinalPrice}</p>
 </li>`;
   totalPrice += item.FinalPrice;
   return newItem;
 }
 
+
+
 renderCartContents();
+
+
+
+
+
+

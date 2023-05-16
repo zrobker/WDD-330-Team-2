@@ -1,10 +1,10 @@
 import { findProductById } from "./productData.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import  productList  from "./productList.mjs";
 
 let product = {};
 
 export default async function productDetails(productId) {
-    console.log("in productDetails");
     // get the details for the current product. findProductById will return a promise! use await or .then() to process it
     product = await findProductById(productId);
     // once we have the product details we can render out the HTML
@@ -24,6 +24,14 @@ export function addProductToCart() {
     document.querySelector(".cart").style.animation = "shake 0.5s";   //animates cart/backpack
     setTimeout(reset, 600);   //used to reset animation
   }
+export function removeProductFromCart(item) {
+  let cart = getLocalStorage("so-cart");
+  
+  const searchIndex = cart.findIndex((product)=> product.Id==item);
+  
+  cart.splice(searchIndex, 1);
+  setLocalStorage("so-cart", cart);
+}
 
 function reset() {
   document.querySelector(".cart").style.animation = "none";   
