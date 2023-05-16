@@ -1,6 +1,9 @@
 import { getLocalStorage } from './utils.mjs';
 import { removeProductFromCart } from './productDetails.mjs';
 
+let totalPrice = 0;
+
+
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
   const htmlItems = cartItems?.map((item) => cartItemTemplate(item));
@@ -10,6 +13,10 @@ function renderCartContents() {
       '<a href=\'../index.html\'> Continue shopping here</a>';
   } else {
     document.querySelector('.product-list').innerHTML = htmlItems?.join('');
+    let part1 = '<p class="cart-total">Total: $'
+    let part2 = '</p>'
+    let totalHTML = part1.concat(totalPrice, part2);
+    document.querySelector('.cart-footer').innerHTML = totalHTML;
   }
 
   //querySelectorAll() method returns a NodeList object which does not have a click() function. Use querySelectorAll() to select a group of elements and then loop through them to add a click event listener to each one.
@@ -44,8 +51,8 @@ function cartItemTemplate(item) {
     <p class='cart-card__quantity'>qty: 1</p>
   </div>
   <p class='cart-card__price'>$${item.FinalPrice}</p>
-  </li>`;
-
+</li>`;
+  totalPrice += item.FinalPrice;
   return newItem;
 }
 

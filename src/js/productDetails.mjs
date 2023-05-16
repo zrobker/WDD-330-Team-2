@@ -2,7 +2,6 @@ import { findProductById } from "./productData.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 import  productList  from "./productList.mjs";
 
-
 let product = {};
 
 export default async function productDetails(productId) {
@@ -36,11 +35,16 @@ export function removeProductFromCart(item) {
 
 function reset() {
   document.querySelector(".cart").style.animation = "none";   
-}
-  
+}  
 
 export function renderProductDetails() {
-  
+  if (product === undefined) {
+    let message = '<p>Unfortunately, that product cannot be found.</p>' +
+    '<a href=\'../index.html\'> Return to home page</a>';
+    document.querySelector("#addToCart").insertAdjacentHTML("beforebegin", message);
+    document.querySelector("#addToCart").style.display = 'none';
+  } else {
+    console.log("in render");
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
       product.NameWithoutBrand;
@@ -52,6 +56,5 @@ export function renderProductDetails() {
     document.querySelector("#productDescriptionHtmlSimple").innerHTML =
       product.DescriptionHtmlSimple;
     document.querySelector("#addToCart").dataset.id = product.Id;
+  }
 }
-
-productList();
