@@ -44,7 +44,7 @@ export function renderProductDetails() {
     document.querySelector("#addToCart").insertAdjacentHTML("beforebegin", message);
     document.querySelector("#addToCart").style.display = 'none';
   } else {
-    console.log("in render");
+    
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
       product.NameWithoutBrand;
