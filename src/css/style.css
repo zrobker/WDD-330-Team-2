@@ -170,6 +170,11 @@ button {
 .card__name {
   font-size: 1em;
 }
+
+.product__retail-price {
+  text-decoration: line-through;
+  color:crimson;
+}
 /* End product list card */
 
 .product-detail {
