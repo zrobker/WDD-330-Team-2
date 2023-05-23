@@ -159,8 +159,21 @@ button {
 .products {
   padding: 0.5em;
 }
+
+#products-l {
+  display: grid;
+}
+
+#product-grid {
+  display: block;
+}
+
+#product-grid img{
+  max-width: 150px;
+}
+
 .product-list {
-  display: flex;
+  /* display: flex; */
   flex-flow: row wrap;
   justify-content: space-between;
   list-style-type: none;
@@ -270,3 +283,5 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+
