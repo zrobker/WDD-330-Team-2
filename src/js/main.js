@@ -1,13 +1,10 @@
-import productList from "./productList.mjs";
+import { getLocalStorage, loadHeaderFooter, setLocalStorage } from './utils.mjs';
+import productList from './productList.mjs';
 
-import { getLocalStorage, loadHeaderFooter, setLocalStorage } from "./utils.mjs";
-
+productList('.product-list', category);
 loadHeaderFooter();
 
-productList(".product-list", "tents");
-
-
-document.getElementById("newsletter").addEventListener("click", addToMailingList);
+document.getElementById('newsletter').addEventListener('click', addToMailingList);
 
 function addToMailingList(){
     
@@ -30,9 +27,9 @@ function addToMailingList(){
 
 
     const email_input = document.createElement('input');/*create the new element to be added*/
-    email_input.setAttribute("id", "custEmail");
-    email_input.setAttribute("type", "email");
-    email_input.setAttribute("placeholder", "someone@gmail.com");
+    email_input.setAttribute('id', 'custEmail');
+    email_input.setAttribute('type', 'email');
+    email_input.setAttribute('placeholder', 'someone@gmail.com');
 
     const email_submit = document.createElement('input');
     email_submit.setAttribute('type', 'submit');
@@ -54,6 +51,6 @@ function addToMailingList(){
         mailList = [];
     }
     mailList.push(email);
-    console.log(mailList);
+    // console.log(mailList);
     setLocalStorage('mailing-list', mailList);
 }
