@@ -6,6 +6,7 @@ loadHeaderFooter();
 
 productList(".product-list", "tents");
 
+
 document.getElementById("newsletter").addEventListener("click", addToMailingList);
 
 function addToMailingList(){
