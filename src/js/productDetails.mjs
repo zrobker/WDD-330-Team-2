@@ -44,13 +44,15 @@ export function renderProductDetails() {
     document.querySelector("#addToCart").insertAdjacentHTML("beforebegin", message);
     document.querySelector("#addToCart").style.display = 'none';
   } else {
-    console.log("in render");
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
       product.NameWithoutBrand;
     document.querySelector("#productImage").src = product.Image;
     document.querySelector("#productImage").alt = product.Name;
-    document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
+    if (product.SuggestedRetailPrice > product.FinalPrice) {
+    document.querySelector("#productSuggestedRetailPrice").innerText = "$" + product.SuggestedRetailPrice.toFixed(2);
+    }
+    document.querySelector("#productFinalPrice").innerText = "$" + product.FinalPrice.toFixed(2);
     document.querySelector("#productColorName").innerText =
       product.Colors[0].ColorName;
     document.querySelector("#productDescriptionHtmlSimple").innerHTML =
