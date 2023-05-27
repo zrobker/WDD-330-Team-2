@@ -168,7 +168,7 @@ button {
   display: block;
 }
 
-#product-grid img{
+#product-grid img {
   max-width: 150px;
 }
 
@@ -237,7 +237,6 @@ button {
 .cart-card .qty {
   grid-row: 1;
   grid-column: 3/4;
-  margin: auto;
 }
 .cart-card p {
   margin-top: 0;
@@ -253,11 +252,13 @@ button {
 }
 
 .cart-card .remove {
-  width: 30px;
+  width: 23px;
+  vertical-align: bottom;
 }
 
 .cart-card__quantity {
   text-align: center;
+  width: 3em;
 }
 
 .cart-card__price {
@@ -283,5 +284,3 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
-
-
