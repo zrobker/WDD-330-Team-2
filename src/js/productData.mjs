@@ -1,3 +1,6 @@
+import productDetails from "./productDetails.mjs";
+import productCardTemplate from "./productList.mjs";
+
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
 function convertToJson(res) {
@@ -17,5 +20,17 @@ export async function getData(category) {
 export async function findProductById(id) {
   const response = await fetch(baseURL + `product/${id}`);
   const product = await convertToJson(response);
+  
+  
   return product.Result;
+}
+
+export function searchProducts() {
+  var input = document.querySelector('#inputBox').value;
+ 
+  let found = findProductById(input);
+  
+  let page = "product_pages/index.html?product="+input;
+  
+  window.location.href = page;
 }
