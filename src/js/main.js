@@ -2,7 +2,9 @@ import {
   getLocalStorage,
   loadHeaderFooter,
   setLocalStorage,
+  addToMailingList
 } from './utils.mjs';
+import { searchProducts} from './productData.mjs';
 
 loadHeaderFooter();
 
@@ -62,3 +64,8 @@ function addToMailingList() {
   // console.log(mailList);
   setLocalStorage('mailing-list', mailList);
 }
+
+document.getElementById('newsletter').addEventListener('click', addToMailingList);
+
+let input = document.querySelector('#inputBox').value;
+document.querySelector('#searchBtn').addEventListener('click', searchProducts);

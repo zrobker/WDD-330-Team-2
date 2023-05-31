@@ -19,6 +19,6 @@ export default async function productList(selector, category) {
   const products = await getData(category);
 
   renderListWithTemplate(productCardTemplate, prodList, products);
+
   document.querySelector(".title").innerHTML = category;
 }
-
