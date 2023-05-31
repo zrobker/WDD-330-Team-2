@@ -6,9 +6,7 @@ import { loadHeaderFooter } from './utils.mjs';
 console.log('in productjs');
 loadHeaderFooter();
 
-
 const productId = getParam('product');
 
 
 productDetails(productId);
- 

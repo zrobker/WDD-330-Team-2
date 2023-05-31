@@ -20,12 +20,14 @@ export function addProductToCart() {
     if (!cart) {
       cart = [];
     }
+    product.qty = 1
     cart.push(product);
     setLocalStorage("so-cart", cart);
 
     document.querySelector(".cart").style.animation = "shake 0.5s";   //animates cart/backpack
     setTimeout(reset, 600);   //used to reset animation
   }
+
 export function removeProductFromCart(item) {
   let cart = getLocalStorage("so-cart");
   
@@ -49,7 +51,7 @@ export function renderProductDetails() {
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
       product.NameWithoutBrand;
-    document.querySelector("#productImage").src = product.Image;
+    document.querySelector("#productImage").src = product.Images.PrimaryLarge;
     document.querySelector("#productImage").alt = product.Name;
     if (product.SuggestedRetailPrice > product.FinalPrice) {
     document.querySelector("#productSuggestedRetailPrice").innerText = "$" + product.SuggestedRetailPrice.toFixed(2);
