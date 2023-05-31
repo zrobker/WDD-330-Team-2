@@ -3,7 +3,7 @@ import {
   addToMailingList
 } from './utils.mjs';
 
-import { searchProducts} from './productData.mjs';
+import { searchProducts} from './externalServices.mjs';
 
 loadHeaderFooter();
 
