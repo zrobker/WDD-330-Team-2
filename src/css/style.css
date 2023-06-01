@@ -64,7 +64,7 @@ img {
 }
 header {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   padding: 0 10px;
 }
 .logo {
@@ -80,16 +80,15 @@ header {
 .search-container {
   display: flex;
   align-items: center;
-  
 }
 
-.search-container form{
+.search-container form {
   display: flex;
   overflow: hidden;
   flex-wrap: nowrap;
 }
 
-.search-container input[type=text] {
+.search-container input[type="text"] {
   float: right;
   padding: 14px;
   border: none;
@@ -111,12 +110,12 @@ button img {
   height: 23px;
 }
 
-.search-container input[type=text], .search-container button {
+.search-container input[type="text"],
+.search-container button {
   float: none;
   display: inline;
   text-align: left;
   margin: 0;
-  
 }
 
 .logo img {
@@ -222,12 +221,10 @@ button {
   justify-content: space-between;
   list-style-type: none;
   padding: 0;
-  
 }
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
-
 }
 /* Styles for product lists */
 .product-card {
