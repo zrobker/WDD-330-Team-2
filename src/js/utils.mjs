@@ -1,4 +1,4 @@
-
+import { searchProducts } from './externalServices.mjs';
 
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
@@ -82,7 +82,13 @@ export async function loadHeaderFooter() {
 
   await renderWithTemplate(headerTemplateFn, headerEl);
   await renderWithTemplate(footerTemplateFn, footerEl);
+
+
+  document.querySelector('#searchBtn2').addEventListener('click', searchProducts);
 }
+
+
+
 
 export function alertMessage(message, scroll = true, duration = 3000) {
   
