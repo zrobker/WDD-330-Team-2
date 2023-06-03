@@ -1,4 +1,4 @@
-import { searchProducts } from './externalServices.mjs';
+import { searchProducts, getProductsByCategory } from './externalServices.mjs';
 
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
@@ -86,8 +86,6 @@ export async function loadHeaderFooter() {
 
   document.querySelector('#searchBtn2').addEventListener('click', searchProducts);
 }
-
-
 
 
 export function alertMessage(message, scroll = true, duration = 3000) {

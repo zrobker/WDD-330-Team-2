@@ -6,6 +6,7 @@ import { loadHeaderFooter } from './utils.mjs';
 loadHeaderFooter();
 
 
+
 let totalPrice = 0;
 
 function renderCartContents() {

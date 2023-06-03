@@ -1,4 +1,4 @@
-import { loadHeaderFooter, addToMailingList } from './utils.mjs';
+import { loadHeaderFooter, addToMailingList} from './utils.mjs';
 import { searchProducts } from './externalServices.mjs';
 import alert from './alert.mjs';
 
@@ -12,17 +12,6 @@ document
 document
   .getElementById('newsletter')
   .addEventListener('click', addToMailingList);
-
-
-document.querySelector('#searchBtn').addEventListener('click', searchProducts);
-
-setTimeout(search, 600);   //used to wait for the header to load
-
-function search() {
-  document.querySelector('#searchBtn2').addEventListener('click', searchProducts);
-}
-
-let navSearchBtn = document.querySelector('#searchBtn2');
 
 
 
