@@ -12,8 +12,13 @@ document
   .getElementById('newsletter')
   .addEventListener('click', addToMailingList);
 
-//let input = document.querySelector('#inputBox').value;
+
 document.querySelector('#searchBtn').addEventListener('click', searchProducts);
+
+
+let navSearchBtn = document.querySelector('#searchBtn2');
+
+
 
 //look for any messages in json and alert on index.html
 const newMessage = new alert();

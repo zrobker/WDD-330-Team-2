@@ -24,15 +24,15 @@ export async function findProductById(id) {
   return product.Result;
 }
 
-export function searchProducts() {
-  var input = document.querySelector('#inputBox').value;
+export async function searchProducts() {
+  var input = await document.querySelector('#inputBox').value;
  
-  let found = findProductById(input);
-  
   let page = "product_pages/index.html?product="+input;
   
   window.location.href = page;
 }
+
+
 
 export async function checkout(payload) {
   const options = {
