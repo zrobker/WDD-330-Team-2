@@ -64,6 +64,7 @@ export function renderProductDetails() {
     document.querySelector("#addToCart").insertAdjacentHTML("beforebegin", message);
     document.querySelector("#addToCart").style.display = 'none';
   } else {
+    document.querySelector("#breadcrumb").innerText = product.Category;
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
       product.NameWithoutBrand;

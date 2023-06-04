@@ -1,17 +1,25 @@
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
-function convertToJson(res) {
+async function convertToJson(res) {
+  const data = await res.json();
   if (res.ok) {
-    return res.json();
+    return data;
   } else {
-    throw new Error("Bad Response");
+    throw { name: 'servicesError', message: data };
+
   }
 }
 
 export async function getProductsByCategory(category) {
   const response = await fetch(baseURL + `products/search/${category}`);
   const data = await convertToJson(response);
+
+  let length = Object.keys(data.Result).length;
+
+
+  console.log("this is the result of getProductsByCategory length:" + length);
   return data.Result;
+  
 }
 
 export async function findProductById(id) {
@@ -21,15 +29,15 @@ export async function findProductById(id) {
   return product.Result;
 }
 
-export function searchProducts() {
-  var input = document.querySelector('#inputBox').value;
+export async function searchProducts() {
+  var input = await document.querySelector('#inputBox2').value;
  
-  let found = findProductById(input);
-  
-  let page = "product_pages/index.html?product="+input;
+  let page = "/product_pages/index.html?product="+input;
   
   window.location.href = page;
 }
+
+
 
 export async function checkout(payload) {
   const options = {

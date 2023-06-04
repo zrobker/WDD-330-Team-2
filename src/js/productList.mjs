@@ -21,5 +21,8 @@ export default async function productList(selector, category) {
 
   renderListWithTemplate(productCardTemplate, prodList, products);
 
-  document.querySelector(".title").innerHTML = category;
+  let count = Object.keys(products).length;
+  console.log("this is the product count inside productlist:" + count);
+
+  document.querySelector("#breadcrumb").innerHTML = category + " -> " + count;
 }
