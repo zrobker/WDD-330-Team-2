@@ -7,7 +7,6 @@ let product = {};
 export default async function productDetails(productId) {
     // get the details for the current product. findProductById will return a promise! use await or .then() to process it
     product = await findProductById(productId);
-  
     // once we have the product details we can render out the HTML
     renderProductDetails();
     // once the HTML is rendered we can add a listener to Add to Cart button
@@ -16,13 +15,31 @@ export default async function productDetails(productId) {
 
 export function addProductToCart() {
     let cart = getLocalStorage("so-cart");
+    let newProduct = product;
+    let newItem = true;
     if (!cart) {
       cart = [];
     }
-    product.qty = 1
-    cart.push(product);
-    setLocalStorage("so-cart", cart);
+    // Check through cart to see if new product already exists
+    for (product of cart) {
+      // The code below turns the string into an int so it does not concatinate
+      let quantity = (product.qty * 1) +1;
+      if (newProduct.Id == product.Id) {
+        product.qty = quantity;
+        newItem = false;
+      } 
+    }
+    product = newProduct;
+    if (newItem) {
+      newProduct.qty = 1;
+      cart.push(newProduct);
+    }
 
+
+   
+
+    setLocalStorage("so-cart", cart);
+    console.log(cart);
     document.querySelector(".cart").style.animation = "shake 0.5s";   //animates cart/backpack
     setTimeout(reset, 600);   //used to reset animation
   }

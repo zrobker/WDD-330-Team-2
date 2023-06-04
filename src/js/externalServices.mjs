@@ -1,4 +1,3 @@
-
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
 async function convertToJson(res) {
