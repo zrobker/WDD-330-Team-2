@@ -25,9 +25,9 @@ export async function findProductById(id) {
 }
 
 export async function searchProducts() {
-  var input = await document.querySelector('#inputBox').value;
+  var input = await document.querySelector('#inputBox2').value;
  
-  let page = "product_pages/index.html?product="+input;
+  let page = "/product_pages/index.html?product="+input;
   
   window.location.href = page;
 }

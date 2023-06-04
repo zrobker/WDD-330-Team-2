@@ -4,6 +4,7 @@ import alert from './alert.mjs';
 
 loadHeaderFooter();
 
+
 document
   .getElementById('newsletter')
   .addEventListener('click', addToMailingList);
@@ -15,6 +16,11 @@ document
 
 document.querySelector('#searchBtn').addEventListener('click', searchProducts);
 
+setTimeout(search, 600);   //used to wait for the header to load
+
+function search() {
+  document.querySelector('#searchBtn2').addEventListener('click', searchProducts);
+}
 
 let navSearchBtn = document.querySelector('#searchBtn2');
 
