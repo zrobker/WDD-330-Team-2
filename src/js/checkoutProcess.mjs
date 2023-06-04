@@ -14,7 +14,7 @@ function formDataToJSON(formElement) {
 
 function packageItems(items) {
     const simplifiedItems = items.map((item) => {
-      console.log(item);
+      // console.log(item);
       return {
         id: item.Id,
         price: item.FinalPrice,
@@ -85,7 +85,7 @@ const checkoutProcess = {
         json.tax = this.tax;
         json.shipping = this.shipping;
         json.items = packageItems(this.list);
-        console.log(json);
+        // console.log(json);
         try {
           const res = await checkout(json);
           console.log(res);
