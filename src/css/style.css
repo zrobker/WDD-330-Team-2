@@ -122,6 +122,12 @@ button img {
   margin: 0;
 }
 
+.wishCart {
+  width: 40px;
+  display: flex;
+  align-items: center;
+}
+
 .logo img {
   width: 60px;
   height: 60px;
