@@ -169,9 +169,9 @@ export function addToMailingList(){
 
 export function is_first_time() {
   let loggedIn = getLocalStorage('is-logged-in');
+  var modal = document.getElementById("myModal");
   if (!loggedIn) {
-    var modal = document.getElementById("myModal");
-
+    modal.style.display = "block";
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
@@ -185,4 +185,6 @@ export function is_first_time() {
       if (event.target == modal) {
         modal.style.display = "none";
       }
-}}}
+    }
+  }
+}
