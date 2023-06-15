@@ -12,6 +12,7 @@ let totalPrice = 0;
 function renderCartContents() {
   totalPrice = 0;
   const cartItems = getLocalStorage('so-cart');
+  
   const htmlItems = cartItems?.map((item) => cartItemTemplate(item));
   if (!htmlItems || htmlItems.length === 0) {
     document.querySelector('.product-list').innerHTML = '';
@@ -49,6 +50,8 @@ function renderCartContents() {
 }
 
 function cartItemTemplate(item) {
+  console.log("in cart item template");
+  console.log(item);
   const newItem = `<li class='cart-card divider'>
   <a href='#' class='cart-card__image'>
     <img

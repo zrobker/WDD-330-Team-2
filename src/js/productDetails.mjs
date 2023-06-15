@@ -1,6 +1,6 @@
 import { findProductById } from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
-import  productList  from "./productList.mjs";
+
 
 let product = {};
 
@@ -10,7 +10,10 @@ export default async function productDetails(productId) {
     // once we have the product details we can render out the HTML
     renderProductDetails();
     // once the HTML is rendered we can add a listener to Add to Cart button
-    document.getElementById("addToCart").addEventListener("click", addProductToCart);
+    document.querySelector(".addToCart").addEventListener("click", addProductToCart);
+
+     // once the HTML is rendered we can add a listener to Add to Wish List button
+     document.getElementById("addToWishList").addEventListener("click", addProductToWishList);
 }
 
 export function addProductToCart() {
@@ -35,14 +38,41 @@ export function addProductToCart() {
       cart.push(newProduct);
     }
 
-
-   
-
     setLocalStorage("so-cart", cart);
     console.log(cart);
     document.querySelector(".cart").style.animation = "shake 0.5s";   //animates cart/backpack
     setTimeout(reset, 600);   //used to reset animation
+}
+
+export function addProductToWishList() {
+  console.log("in wish list");
+  let wish = getLocalStorage("so-wish");
+  let newWish = product;
+  let newItem = true;
+  if (!wish) {
+    wish = [];
   }
+
+   // Check through wish list to see if new wish already exists
+   for (product of wish) {
+    // The code below turns the string into an int so it does not concatinate
+    let quantity = (product.qty * 1) +1;
+    if (newWish.Id == product.Id) {
+      product.qty = quantity;
+      newItem = false;
+    } 
+  }
+  product = newWish;
+    if (newItem) {
+      newWish.qty = 1;
+      wish.push(newWish);
+    }
+
+  setLocalStorage("so-wish", wish);
+  console.log(wish);
+  document.querySelector(".wishCart").style.animation = "shake 0.5s";   //animates cart/backpack
+  setTimeout(reset, 600);   //used to reset animation
+}
 
 export function removeProductFromCart(item) {
   let cart = getLocalStorage("so-cart");
@@ -54,7 +84,8 @@ export function removeProductFromCart(item) {
 }
 
 function reset() {
-  document.querySelector(".cart").style.animation = "none";   
+  document.querySelector(".cart").style.animation = "none"; 
+  document.querySelector(".wishCart").style.animation = "none";  
 }  
 
 export function renderProductDetails() {
@@ -78,6 +109,7 @@ export function renderProductDetails() {
       product.Colors[0].ColorName;
     document.querySelector("#productDescriptionHtmlSimple").innerHTML =
       product.DescriptionHtmlSimple;
-    document.querySelector("#addToCart").dataset.id = product.Id;
+    document.querySelector(".addToCart").dataset.id = product.Id;
+    document.querySelector("#addToWishList").dataset.id = product.Id;
   }
 }
