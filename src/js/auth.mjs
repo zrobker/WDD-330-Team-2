@@ -3,6 +3,7 @@ import { alertMessage, getLocalStorage, setLocalStorage } from "./utils.mjs";
 import jwt_decode from "jwt-decode";
 
 const tokenKey = "so-token";
+const loggedIn = "is-logged-in";
 export async function login(creds, redirect = "/") {
     try {
         const token = await loginRequest(creds);
@@ -53,5 +54,8 @@ export function checkLogin() {
     console.log(location);
     // redirect by updating window.location =
     window.location = `/login/index.html?redirect=${location.pathname}`;
-  } else return token; //if they are logged in then just return the token.
-}
+  } else {
+    setLocalStorage(loggedIn, true);
+    console.log(document.cookie);
+    return token; //if they are logged in then just return the token.
+}}
