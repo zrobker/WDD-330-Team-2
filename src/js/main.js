@@ -1,8 +1,9 @@
-import { loadHeaderFooter, addToMailingList } from "./utils.mjs";
+import { loadHeaderFooter, addToMailingList, is_first_time } from "./utils.mjs";
 
 import alert from "./alert.mjs";
 
 loadHeaderFooter();
+is_first_time();
 
 document
   .getElementById("newsletter")
