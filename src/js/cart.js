@@ -48,8 +48,8 @@ function renderCartContents() {
 }
 
 function cartItemTemplate(item) {
-  console.log("in cart item template");
-  console.log(item);
+  //console.log('in cart item template');
+  //console.log(item);
   const newItem = `<li class='cart-card divider'>
   <a href='#' class='cart-card__image'>
     <img
