@@ -1,7 +1,8 @@
-import { getLocalStorage, loadHeaderFooter} from './utils.mjs';
-
+import { getLocalStorage, loadHeaderFooter, setLocalStorage} from './utils.mjs';
+import  { findProductById} from './externalServices.mjs';
 
 let product = {};
+let wishId = "";
 
 loadHeaderFooter();
 
@@ -24,6 +25,7 @@ async function renderWishlistContents() {
     const items = document.querySelectorAll(".addToCart2");
     items.forEach((wishItem) => {
       wishItem.addEventListener('click', function() {
+    
         addToCart(htmlItems);
       });
     });
@@ -35,8 +37,8 @@ async function renderWishlistContents() {
 }
 
 function wishlistItemTemplate(item) {
-    console.log("this is the item:" + item.Id);
     product = item.Id;
+    wishId = item.Id;
     const newItem = `<li class='cart-card divider'>
     <img
       src='${item.Images.PrimarySmall}'
@@ -52,14 +54,46 @@ function wishlistItemTemplate(item) {
     <p class='cart-card_id'>${item.Id}</p>
     </li>`;
    
-
+    
     return newItem;
 }
 
-function addToCart (itemId) {
-  console.log("in add to cart" + itemId);
+async function addToCart (itemId) {
+console.log("the item:" + itemId);
+  let cart = getLocalStorage("so-cart");
+  
+  let wish = getLocalStorage("so-wish");
+  
+  let newProduct = wish[0];
+  console.log(newProduct);
+  let newItem = true;
+  if (!cart) {
+    cart = [];
+  }
 
-  
-  
+   // Check through cart to see if new product already exists
+   for (product of cart) {
+    // The code below turns the string into an int so it does not concatinate
+    let quantity = (product.qty * 1) +1;
+    
+    if (newProduct.Id == product.Id) {
+      product.qty = quantity;
+      newItem = false;
+      console.log("in not new product, product qty");
+      console.log(product.qty);
+    } 
+    if (newItem) {
+      newProduct.qty = 1;
+      cart.push(newProduct);
+    };
+    console.log(cart);
+  }
+  setLocalStorage("so-cart", cart);
+  // remove item from wishlist
+  console.log(wish);
+  wish.splice(0, 1);
+  console.log("the new wish list is:");
+  console.log(wish);
+  setLocalStorage("so-wish", wish);
 }
 renderWishlistContents();
